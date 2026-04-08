@@ -1,10 +1,12 @@
-# Módulo de Discos y Storage Pools
+# Administración de Almacenamiento
 
-Este módulo administra el almacenamiento persistente de las máquinas virtuales. RackVR organiza el almacenamiento en **Storage Pools** (depósitos) de Libvirt.
+RackVR gestiona el almacenamiento persistente utilizando la abstracción de **Storage Pools** de Libvirt, optimizando el rendimiento de lectura y escritura.
 
-### Almacenamiento de Datos
-- **PostgreSQL 17**: La base de datos (corriendo en el puerto **8081**) almacena los metadatos, rutas de archivos y estados de los discos.
-- **Formatos de Disco**: Soporte nativo para imágenes **QCOW2**, que permiten la expansión dinámica del almacenamiento (Thin Provisioning).
+## Formatos y Aprovisionamiento
+* **QCOW2**: Formato estándar utilizado que permite el uso de *Thin Provisioning* (los archivos crecen según la demanda real de datos).
+* **Snapshots**: Capacidad de congelar el estado del disco para permitir reversiones rápidas ante fallos de configuración.
 
-### Ubicación del Almacenamiento
-Por defecto, los discos se gestionan en las rutas estándar de Libvirt (`/var/lib/libvirt/images`), garantizando que el sistema tenga permisos de lectura/escritura sobre los volúmenes creados.
+## Flujo de Datos
+1. **Definición**: El usuario define el tamaño y el pool de destino (por defecto `/var/lib/libvirt/images`).
+2. **Registro**: Los metadatos de la ruta y el estado se indexan en PostgreSQL.
+3. **Asignación**: El volumen se vincula dinámicamente al dominio de la VM durante el proceso de arranque.

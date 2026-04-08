@@ -7,15 +7,10 @@ const config = {
   tagline: 'Orquestación de Virtualización KVM',
   favicon: 'img/logor.ico',
 
-  future: {
-    v4: true,
-  },
-
   url: 'https://tu-dominio.com',
   baseUrl: '/',
 
-  // Configuración de despliegue si usas GitHub Pages
-  organizationName: 'tu-usuario', 
+  organizationName: 'diego20011', 
   projectName: 'docs-rackvr', 
 
   onBrokenLinks: 'throw',
@@ -34,7 +29,7 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
         },
-        blog: false, // Desactivado si no planeas usar un blog técnico
+        blog: false, 
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -64,7 +59,7 @@ const config = {
             label: 'Documentación',
           },
           {
-            href: 'https://github.com/tu-repositorio',
+            href: 'https://github.com/diego20011/docs-rackvr',
             label: 'GitHub',
             position: 'right',
           },
@@ -74,24 +69,32 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Contenido',
+            title: 'Documentación',
             items: [
+              {
+                label: 'Arquitectura',
+                to: '/docs/modulos/arquitectura/vision-general',
+              },
               {
                 label: 'Instalación',
                 to: '/docs/instalacion-sistema',
               },
-              {
-                label: 'Módulos',
-                to: '/docs/modulos/hosts',
-              },
             ],
           },
           {
-            title: 'Proyecto',
+            title: 'Infraestructura',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/tu-repositorio',
+                label: 'Gestión de VMs',
+                to: '/docs/modulos/vms',
+              },
+              {
+                label: 'Redes',
+                to: '/docs/modulos/redes',
+              },
+              {
+                label: 'Roadmap',
+                to: '/docs/roadmap',
               },
             ],
           },
