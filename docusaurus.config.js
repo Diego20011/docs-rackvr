@@ -92,10 +92,6 @@ const config = {
                 label: 'Redes',
                 to: '/docs/modulos/redes',
               },
-              {
-                label: 'Roadmap',
-                to: '/docs/roadmap',
-              },
             ],
           },
         ],
