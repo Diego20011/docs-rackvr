@@ -29,15 +29,44 @@ Host: localhost | Puerto: 8081
 
 Acceso rápido: psql -U admin -d omnivm_db
 
-## 3. Ejecución del Backend
-Finalmente, levantamos la API de RackVR. Asegúrate de tener tu entorno virtual activo.
+## 3. Ejecución del Backend (FastAPI)
+El Backend actúa como el motor que se comunica con Libvirt y la base de datos.
 
-# Instalar requerimientos (si es la primera vez)
+Crear y activar el entorno virtual:
+Esto aísla las librerías del proyecto de tu sistema global.
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+Instalar dependencias:
+```
+
 ```bash
 pip install -r requirements.txt
 ```
 
-# Iniciar servidor con recarga automática
+Configurar variables de entorno:
+Asegúrate de tener un archivo .env con las credenciales de la base de datos (puerto 8081) y Keycloak.
+
+Iniciar el servidor:
+
 ```bash
 uvicorn app.main:app --reload
 ```
+El servidor estará disponible en http://localhost:8000.
+
+## 4. Ejecución del Frontend (React + Vite)
+La interfaz de usuario es la que permite gestionar visualmente los hosts y las VMs.
+
+Instalar módulos de Node:
+Debes estar dentro de la carpeta frontend-rackvr.
+
+```bash
+npm install
+Iniciar el entorno de desarrollo:
+```
+
+```bash
+npm run dev
+```
+La web se abrirá automáticamente en http://localhost:5173.

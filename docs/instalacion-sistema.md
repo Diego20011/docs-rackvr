@@ -1,20 +1,7 @@
----
-sidebar_label: '0. Preparación del Host'
-sidebar_label: '1. Herramientas de Virtualización'
-sidebar_label: '2. Dependencias de Desarrollo'
-sidebar_label: '3. Activación del Hipervisor'
-sidebar_position: 1
-sidebar_position: 2
-sidebar_position: 3
-sidebar_position: 4
-
----
-
 # Guía de Instalación y Despliegue
-...
 Sigue estos pasos para configurar el entorno de RackVR, Keycloak y la base de datos en tu máquina local.
 
-# 🛠️ Preparación del Host
+#  Preparación del Host
 
 Antes de desplegar RackVR, es necesario preparar el sistema operativo (CentOS/RHEL) con las herramientas de virtualización y las librerías de desarrollo necesarias.
 

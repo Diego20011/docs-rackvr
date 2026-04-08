@@ -4,7 +4,7 @@ const sidebars = {
     'intro',
     {
       type: 'category',
-      label: '🚀 Guía de Instalación',
+      label: 'Guía de Instalación',
       collapsed: false,
       items: [
         'instalacion-sistema',
@@ -13,7 +13,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '📦 Módulos y Configuración',
+      label: 'Módulos y Configuración',
       collapsed: true,
       items: [
         'modulos/redes',
