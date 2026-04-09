@@ -1,3 +1,4 @@
+
 # Introducción a RackVR
 
 RackVR es una plataforma de orquestación para virtualización basada en KVM. Este sitio contiene la documentación técnica y de usuario para la gestión de infraestructuras críticas.
