@@ -1,10 +1,8 @@
-# Bienvenido a la Documentación de RackVR
+# Introducción a RackVR
 
-RackVR es una solución integral para la orquestación de máquinas virtuales sobre entornos **KVM/QEMU**. 
+RackVR es una plataforma de orquestación para virtualización basada en KVM. Este sitio contiene la documentación técnica y de usuario para la gestión de infraestructuras críticas.
 
-Este portal contiene toda la información necesaria para instalar, configurar y administrar su infraestructura virtual de manera eficiente y centralizada.
-
-## ¿Por dónde empezar?
-- Si es administrador, comience por la **Guía de Instalación**.
-- Si desea conocer la tecnología detrás del proyecto, visite **Visión General**.
-- Para aprender a desplegar su primera VM, consulte el **Proceso de Despliegue**.
+### Secciones principales:
+- **Arquitectura**: Entienda cómo se conectan el Backend y los Nodos.
+- **Instalación**: Pasos para desplegar el sistema.
+- **Manual**: Cómo crear y gestionar VMs.

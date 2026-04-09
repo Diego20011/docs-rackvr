@@ -1,5 +1,6 @@
 {
   "name": "docs-rackvr",
+  "description": "Documentación oficial del orquestador de virtualización RackVR",
   "version": "0.0.0",
   "private": true,
   "scripts": {
