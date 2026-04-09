@@ -65,38 +65,46 @@ const config = {
           },
         ],
       },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Documentación',
-            items: [
-              {
-                label: 'Arquitectura',
-                to: '/docs/modulos/arquitectura/vision-general',
-              },
-              {
-                label: 'Instalación',
-                to: '/docs/instalacion-sistema',
-              },
-            ],
-          },
-          {
-            title: 'Infraestructura',
-            items: [
-              {
-                label: 'Gestión de VMs',
-                to: '/docs/modulos/vms',
-              },
-              {
-                label: 'Redes',
-                to: '/docs/modulos/redes',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} RackVR.`,
-      },
+footer: {
+  style: 'dark',
+  links: [
+    {
+      title: 'Documentación',
+      items: [
+        {
+          label: 'Visión General',
+          to: '/docs/modulos/arquitectura/vision-general',
+        },
+        {
+          label: 'Arquitectura Técnica',
+          to: '/docs/modulos/arquitectura/componentes',
+        },
+        {
+          label: 'Instalación',
+          to: '/docs/instalacion-sistema',
+        },
+      ],
+    },
+    {
+      title: 'Infraestructura',
+      items: [
+        {
+          label: 'Gestión de VMs',
+          to: '/docs/modulos/vms',
+        },
+        {
+          label: 'Redes y Conectividad',
+          to: '/docs/modulos/redes',
+        },
+        {
+          label: 'Almacenamiento',
+          to: '/docs/modulos/discos',
+        },
+      ],
+    },
+  ],
+  copyright: `Copyright © ${new Date().getFullYear()} RackVR.`,
+},
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,

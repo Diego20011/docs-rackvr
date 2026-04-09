@@ -39,6 +39,7 @@ const sidebars = {
         'modulos/hosts',
         'modulos/usuarios-permisos',
         'modulos/seguridad-auditoria',
+        'modulos/auditoria-trazabilidad',
       ],
     },
   ],
