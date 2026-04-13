@@ -1,13 +1,13 @@
-# Seguridad e Identidad
+# Gestión de Usuarios y Roles (RBAC)
 
-La gestión de acceso en RackVR está centralizada a través de **Keycloak**, proporcionando un estándar industrial para la protección de la infraestructura.
+RackVR delega la gestión de identidades a **Keycloak**, pero define 4 roles internos:
 
-## Control de Acceso (RBAC)
-El sistema implementa un modelo de Control de Acceso Basado en Roles para definir permisos específicos sobre los recursos:
-* **Administradores**: Control total sobre hosts, redes y usuarios.
-* **Operadores**: Gestión del ciclo de vida de máquinas virtuales asignadas.
-* **Auditores**: Acceso de solo lectura a métricas y registros de eventos.
+| Rol | Permisos | Acceso a Logs |
+| :--- | :--- | :--- |
+| **Administrador** | Control total de infraestructura y usuarios. | Sí (Completo) |
+| **Operador** | Crea, borra y gestiona el ciclo de vida de VMs. | No |
+| **Auditor** | Solo lectura de métricas y visualización de logs. | Sí (Solo lectura) |
+| **Viewer** | Solo lectura de estado de VMs y dashboard. | No |
 
-## Mecanismos de Autenticación
-* **Single Sign-On (SSO)**: Acceso unificado a todos los componentes del sistema.
-* **Gestión de Sesiones**: Validación continua de tokens JWT para asegurar la integridad de las peticiones a la API.
+## Integración Corporativa
+Gracias a Keycloak, RackVR permite sincronizar usuarios desde **LDAP** o **Active Directory**, facilitando la adopción en empresas grandes.

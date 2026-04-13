@@ -1,18 +1,17 @@
-# Componentes del Sistema
+# Componentes Tecnológicos
 
-La arquitectura de RackVR se basa en una estructura modular donde cada componente cumple una función específica dentro del ecosistema de virtualización.
+RackVR se apoya en librerías líderes para garantizar estabilidad:
 
-## Capas Tecnológicas
+## Backend (Python/FastAPI)
+* **Asyncssh**: Para ejecutar comandos `virsh` de forma asíncrona y segura.
+* **APScheduler**: Gestiona tareas de limpieza y sincronización de estado de hosts.
+* **Alembic**: Maneja las migraciones de la base de datos PostgreSQL.
+* **Pydantic**: Validación estricta de los datos que entran y salen de la API.
 
-### Plano de Control (Backend)
-Desarrollado en **FastAPI**, actúa como el orquestador principal. Recibe solicitudes de la interfaz de usuario y las traduce en llamadas a la API de **libvirt** para interactuar con el hipervisor.
+## Frontend (React/Vite)
+* **TailwindCSS**: Diseño moderno, responsivo y ligero.
+* **Lucide React**: Set de iconos consistentes para la interfaz.
 
-### Gestión de Datos
-* **PostgreSQL 17**: Almacena de forma persistente la configuración de los clusters, registros de red, metadatos de almacenamiento y el estado de las VMs.
-
-### Seguridad e Identidad
-* **Keycloak**: Gestiona de manera centralizada la autenticación y autorización, permitiendo implementar políticas de acceso basadas en roles (RBAC).
-
-### Virtualización y Consola
-* **libvirt / KVM**: Capa de abstracción y ejecución de las máquinas virtuales.
-* **noVNC**: Proporciona acceso a la consola gráfica de las instancias directamente desde el navegador web mediante protocolos seguros.
+## Virtualización
+* **Libvirt Python**: Comunicación directa con el demonio del hipervisor.
+* **Websockify**: Bridge para convertir tráfico de consola VNC a WebSockets.

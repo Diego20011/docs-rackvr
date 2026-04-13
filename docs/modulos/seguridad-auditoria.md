@@ -1,16 +1,16 @@
-# Seguridad y Auditoría
+# Seguridad y Flujo de Identidad
 
-RackVR implementa un modelo de seguridad multicapa diseñado para proteger tanto el acceso a la plataforma como la integridad de los nodos de virtualización remotos.
+La seguridad en RackVR es "Stateless" y federada.
 
-## Validación Estricta de Tokens (JWT)
-El backend (FastAPI) no solo actúa como receptor, sino que realiza una validación exhaustiva de cada identidad mediante:
-- **Firma Criptográfica:** Verificación con la clave pública de Keycloak (RS256).
-- **Emisor (iss):** Se valida que el token provenga exclusivamente de la instancia configurada de Keycloak.
-- **Audiencia (aud):** El token debe haber sido emitido específicamente para el cliente `rackvr-backend`.
-- **Expiración:** Rechazo automático de tokens caducados para prevenir ataques de repetición.
+## Flujo de Autenticación (8 Pasos)
+1. **Petición**: El usuario accede al Frontend.
+2. **Redirección**: Se envía al servidor Keycloak.
+3. **Credenciales**: El usuario ingresa datos en Keycloak (MFA soportado).
+4. **Emisión**: Keycloak genera un **Access Token JWT**.
+5. **Cabecera**: El Frontend guarda el token y lo envía en cada petición (`Authorization: Bearer`).
+6. **Validación**: El Backend valida la firma **RS256** con la clave pública de Keycloak.
+7. **RBAC**: Se verifican los roles en el token (`admin`, `operator`, `auditor`, `viewer`).
+8. **Ejecución**: Si todo es válido, la API interactúa con el host vía túnel SSH seguro.
 
-## Seguridad en la Comunicación con Hosts
-Para evitar la exposición de puertos sensibles y ataques Man-in-the-Middle (MITM):
-- **Protocolo Seguro:** Toda la gestión se realiza vía `qemu+ssh://`, utilizando la librería `asyncssh` para túneles cifrados.
-- **Whitelist de Comandos:** Se aplica una política de "denegar por defecto", permitiendo únicamente un conjunto predefinido de comandos `virsh` sanitizados.
-- **Aislamiento de Gestión:** El tráfico de administración se separa del tráfico de datos de las máquinas virtuales mediante segmentación de red.
+## Gestión Stateless
+No se guardan sesiones en el servidor de API. Si un token es robado, su corta duración y la validación de audiencia (`aud`) mitigan el riesgo.

@@ -1,35 +1,18 @@
-# Referencia de la API REST
+# Referencia de la API (RESTful)
 
-La API de RackVR proporciona un conjunto de puntos de enlace (endpoints) diseñados para la gestión automatizada de la infraestructura de virtualización. Está construida sobre el framework **FastAPI**, garantizando alta performance y documentación automática.
+RackVR expone una API robusta construida con **FastAPI**.
 
-## Autenticación
-Todas las peticiones a la API deben estar autenticadas mediante **Keycloak**. El sistema utiliza tokens JWT (JSON Web Tokens) para validar la identidad del usuario.
+## Endpoints de Infraestructura
+* `GET /datacenters`: Lista todos los centros de datos.
+* `GET /clusters/{dc_id}`: Filtra clusters por datacenter.
+* `POST /hosts/health`: Dispara un escaneo de salud sobre un host específico.
 
-* **Header**: `Authorization: Bearer <JWT_TOKEN>`
-* **Formato de datos**: Todas las respuestas y cuerpos de solicitud utilizan `application/json`.
+## Endpoints de Recursos
+* `GET /vms`: Inventario completo de máquinas virtuales.
+* `POST /vms/create`: Inicia el orquestador de despliegue.
+* `GET /isos`: Catálogo de imágenes de instalación.
 
-## Endpoints Principales
+## Endpoints de Sistema
+* `GET /audit/logs`: Registros de trazabilidad (Solo Auditores/Admins).
+* `GET /health`: Estado de los servicios internos (DB, Keycloak, Celery).
 
-### Gestión de Máquinas Virtuales (`/vms`)
-Permite controlar el ciclo de vida de las instancias.
-* `GET /vms`: Lista todas las máquinas virtuales registradas y su estado actual.
-* `POST /vms`: Crea una nueva instancia basada en especificaciones de CPU, RAM y disco.
-* `POST /vms/{id}/action`: Ejecuta operaciones de control (start, stop, pause, resume, revert).
-
-### Gestión de Nodos (`/hosts`)
-Interactúa con los servidores físicos conectados al clúster.
-* `GET /hosts`: Devuelve el inventario de recursos de hardware y carga de trabajo.
-* `POST /hosts`: Registra un nuevo nodo físico en la plataforma.
-
-### Redes y Almacenamiento
-* `GET /networks`: Lista las topologías disponibles (NAT, Bridge, Isolated).
-* `GET /storage/pools`: Muestra el estado y capacidad de los Storage Pools de Libvirt.
-
-## Códigos de Respuesta
-| Código | Descripción |
-| :--- | :--- |
-| `200 OK` | Operación completada exitosamente. |
-| `201 Created` | Recurso (VM/Red) creado correctamente. |
-| `401 Unauthorized` | Token de Keycloak ausente o inválido. |
-| `403 Forbidden` | El usuario no tiene permisos (RBAC) para esta acción. |
-| `422 Unprocessable Entity` | Error de validación en los parámetros enviados. |
